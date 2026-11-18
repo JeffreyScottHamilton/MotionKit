@@ -150,7 +150,7 @@ export function Playground({ entry }: { entry: RegistryEntry }) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4 md:flex-row md:items-stretch">
-        <div className="relative flex min-h-64 min-w-0 flex-1 items-center justify-center overflow-hidden rounded-md border border-border bg-muted/40 p-6">
+        <div data-testid="playground-preview" className="relative flex min-h-64 min-w-0 flex-1 items-center justify-center overflow-hidden rounded-md border border-border bg-muted/40 p-6">
           {Demo ? (
             <Demo key={replay} {...values} />
           ) : (

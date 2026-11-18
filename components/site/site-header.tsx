@@ -14,7 +14,7 @@ export function SiteHeader() {
 
   return (
     <header className="border-b border-border">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3">
         <Link href="/" className="text-base font-semibold tracking-tight">
           MotionKit
         </Link>

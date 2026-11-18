@@ -92,26 +92,25 @@ export function NoticesMarkdown({ markdown }: { markdown: string }) {
             );
           case "p":
             return (
-              <p key={index} className="text-muted-foreground">
+              <p key={index} className="break-words text-muted-foreground [overflow-wrap:anywhere]">
                 {renderInline(block.text)}
               </p>
             );
           case "ul":
             return (
-              <ul key={index} className="list-disc space-y-1 pl-5 text-muted-foreground">
+              <ul key={index} className="list-disc space-y-1 pl-5 text-muted-foreground [overflow-wrap:anywhere]">
                 {block.items.map((item, itemIndex) => (
-                  <li key={itemIndex}>{renderInline(item)}</li>
+                  <li key={itemIndex} className="break-words [overflow-wrap:anywhere]">{renderInline(item)}</li>
                 ))}
               </ul>
             );
           case "pre":
             return (
-              <pre
-                key={index}
-                className="whitespace-pre-wrap break-words rounded-md border border-border bg-muted p-3 text-xs leading-5"
-              >
-                {block.text}
-              </pre>
+              <div key={index} className="max-w-full overflow-x-auto rounded-md border border-border bg-muted">
+                <pre className="whitespace-pre-wrap break-words p-3 text-xs leading-5">
+                  {block.text}
+                </pre>
+              </div>
             );
         }
       })}

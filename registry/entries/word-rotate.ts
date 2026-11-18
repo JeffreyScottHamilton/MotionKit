@@ -38,6 +38,6 @@ export const entry: RegistryEntry = {
     step: 100,
     default: 2500,
   }],
-  usage: "import { WordRotate } from \"@/components/ui/word-rotate\";\n\nexport function Example() {\n  return (\n    <WordRotate\n      words={[\"Design\", \"Build\", \"Ship\"]}\n      duration={ {{duration}} }\n      className=\"text-4xl font-semibold\"\n    />\n  );\n}\n",
+  usage: "import { WordRotate } from \"@/components/ui/word-rotate\";\n\nexport function Example() {\n  return (\n    <WordRotate\n      words={ {{words}}.split(\",\").map((word) => word.trim()) }\n      duration={ {{duration}} }\n      className=\"text-4xl font-semibold\"\n    />\n  );\n}\n",
   addedAt: "2026-11-18",
 };
