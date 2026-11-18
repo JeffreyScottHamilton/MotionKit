@@ -1,0 +1,24 @@
+# dependencies
+node_modules
+
+# next.js
+.next
+out
+next-env.d.ts
+
+# testing
+playwright-report
+test-results
+coverage
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*
+*.tsbuildinfo
+
+# env
+.env*.local
+
+# ultimatum (self-ignored work directory)
+.ultimatum/
