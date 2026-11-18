@@ -25,8 +25,8 @@ export const entry: RegistryEntry = {
   frameworks: ["next", "react"],
   reducedMotion: "Relies on Motion's MotionConfig; no built-in guard. Without a MotionConfig reducedMotion setting, the one-shot slide and fade on toggle still play.",
   controls: [
-    { type: "text", prop: "initialLabel", label: "Initial label (demo span text)", default: "Subscribe" },
-    { type: "text", prop: "subscribedLabel", label: "Subscribed label (demo span text)", default: "Subscribed" },
+    { type: "text", prop: "initialLabel", label: "Initial label", default: "Subscribe" },
+    { type: "text", prop: "subscribedLabel", label: "Subscribed label", default: "Subscribed" },
   ],
   usage: `import { AnimatedSubscribeButton } from "@/components/ui/animated-subscribe-button"
 

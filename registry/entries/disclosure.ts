@@ -27,7 +27,7 @@ export const entry: RegistryEntry = {
   reducedMotion:
     "No built-in guard: height and opacity animate regardless of prefers-reduced-motion.",
   controls: [
-    { type: "boolean", prop: "open", label: "Open on mount (open)", default: false },
+    { type: "boolean", prop: "open", label: "Open on mount", default: false },
   ],
   usage: `import { Disclosure, DisclosureTrigger, DisclosureContent } from "@/components/ui/disclosure";
 

@@ -25,10 +25,10 @@ export const entry: RegistryEntry = {
   frameworks: ["next", "react"],
   reducedMotion: "Under prefers-reduced-motion the loop is disabled (motion-reduce:animate-none): content stays static and is clipped by the container. Needs the marquee keyframes from registry/styles/visual.css.",
   controls: [
-    { type: "boolean", prop: "reverse", label: "Reverse direction (reverse prop)", default: false },
-    { type: "boolean", prop: "pauseOnHover", label: "Pause on hover (pauseOnHover prop)", default: false },
-    { type: "boolean", prop: "vertical", label: "Vertical (vertical prop)", default: false },
-    { type: "number", prop: "repeat", label: "Repeat count (repeat prop)", min: 1, max: 8, step: 1, default: 4 },
+    { type: "boolean", prop: "reverse", label: "Reverse direction", default: false },
+    { type: "boolean", prop: "pauseOnHover", label: "Pause on hover", default: false },
+    { type: "boolean", prop: "vertical", label: "Vertical", default: false },
+    { type: "number", prop: "repeat", label: "Repeat count", min: 1, max: 8, step: 1, default: 4 },
   ],
   usage: `import { Marquee } from "@/components/ui/marquee";
 

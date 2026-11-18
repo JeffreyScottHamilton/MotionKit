@@ -25,8 +25,8 @@ export const entry: RegistryEntry = {
   frameworks: ["next", "react"],
   reducedMotion: "Relies on Motion's MotionConfig; no built-in guard. The fade plays when scrolled into view unless the app sets reducedMotion on MotionConfig.",
   controls: [
-    { type: "select", prop: "as", label: "Element (as prop)", options: ["div", "section", "p"], default: "div" },
-    { type: "boolean", prop: "once", label: "Animate once (once prop)", default: false },
+    { type: "select", prop: "as", label: "Element", options: ["div", "section", "p"], default: "div" },
+    { type: "boolean", prop: "once", label: "Animate once", default: false },
   ],
   usage: `import { InView } from "@/components/ui/in-view";
 

@@ -30,7 +30,7 @@ export const entry: RegistryEntry = {
     {
       type: "number",
       prop: "defaultActiveIndex",
-      label: "Initially active tab (defaultActiveIndex)",
+      label: "Initially active tab",
       min: 0,
       max: 2,
       step: 1,

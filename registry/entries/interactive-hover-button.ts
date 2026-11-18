@@ -25,7 +25,7 @@ export const entry: RegistryEntry = {
   frameworks: ["next", "react"],
   reducedMotion: "No guard: hover transitions (300ms translate, scale and opacity) still play.",
   controls: [
-    { type: "text", prop: "children", label: "Label (children)", default: "Hover me" },
+    { type: "text", prop: "children", label: "Label", default: "Hover me" },
   ],
   usage: `import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
 

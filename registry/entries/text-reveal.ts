@@ -27,7 +27,7 @@ export const entry: RegistryEntry = {
   controls: [{
     type: "text",
     prop: "children",
-    label: "Text (children)",
+    label: "Text",
     default: "Scroll down to reveal this sentence one word at a time.",
   }],
   usage: "import { TextReveal } from \"@/components/ui/text-reveal\";\n\nexport function Example() {\n  return <TextReveal>{{children}}</TextReveal>;\n}\n",

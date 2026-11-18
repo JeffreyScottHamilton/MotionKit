@@ -26,7 +26,7 @@ export const entry: RegistryEntry = {
   reducedMotion:
     "No built-in guard. The sliding indicator is a Motion layout animation and runs under prefers-reduced-motion unless the app sets MotionConfig reducedMotion.",
   controls: [
-    { type: "boolean", prop: "enableHover", label: "Follow hover instead of click (enableHover)", default: false },
+    { type: "boolean", prop: "enableHover", label: "Follow hover instead of click", default: false },
   ],
   usage: `import { AnimatedBackground } from "@/components/ui/animated-background";
 

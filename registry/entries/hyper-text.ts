@@ -27,7 +27,7 @@ export const entry: RegistryEntry = {
   controls: [{
     type: "text",
     prop: "children",
-    label: "Text (children)",
+    label: "Text",
     default: "Motion Kit",
   }, {
     type: "number",
@@ -40,7 +40,7 @@ export const entry: RegistryEntry = {
   }, {
     type: "boolean",
     prop: "startOnView",
-    label: "Start when in view (otherwise on mount)",
+    label: "Start when in view",
     default: false,
   }, {
     type: "boolean",

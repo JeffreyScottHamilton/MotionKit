@@ -27,7 +27,7 @@ export const entry: RegistryEntry = {
   controls: [{
     type: "text",
     prop: "children",
-    label: "Text (children)",
+    label: "Text",
     default: "Animated text effect",
   }, {
     type: "select",
@@ -60,7 +60,7 @@ export const entry: RegistryEntry = {
   }, {
     type: "boolean",
     prop: "trigger",
-    label: "Trigger (toggle off and on to replay exit and enter)",
+    label: "Trigger",
     default: true,
   }],
   usage: "import { TextEffect } from \"@/components/ui/text-effect\";\n\nexport function Example() {\n  return (\n    <TextEffect per=\"{{per}}\" preset=\"{{preset}}\" delay={ {{delay}} } speedReveal={ {{speedReveal}} }>\n      {{children}}\n    </TextEffect>\n  );\n}\n",

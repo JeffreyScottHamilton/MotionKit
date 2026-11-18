@@ -26,7 +26,7 @@ export const entry: RegistryEntry = {
   reducedMotion: "No built-in guard. Rotation is driven only by pointer position over the element (no autoplay), capped at rotationFactor degrees.",
   controls: [
     { type: "number", prop: "rotationFactor", label: "Rotation factor (degrees)", min: 0, max: 45, step: 1, default: 15 },
-    { type: "boolean", prop: "isRevese", label: "Reverse direction (isRevese prop)", default: false },
+    { type: "boolean", prop: "isRevese", label: "Reverse direction", default: false },
   ],
   usage: `import { Tilt } from "@/components/ui/tilt";
 

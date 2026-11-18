@@ -1,4 +1,5 @@
 // From shadcn/ui (https://github.com/shadcn-ui/ui/blob/968d8cb9dc42ae5d52e8fd356cf84596ec832a26/apps/v4/registry/new-york-v4/ui/tabs.tsx) — MIT, Copyright (c) 2023 shadcn
+// Modified: cn imported from @/registry/lib/utils (upstream uses a registry placeholder)
 "use client"
 
 import * as React from "react"

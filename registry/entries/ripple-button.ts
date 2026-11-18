@@ -25,7 +25,7 @@ export const entry: RegistryEntry = {
   frameworks: ["next", "react"],
   reducedMotion: "No guard: each click plays a one-shot 600ms ripple (scale to 2x and fade). It does not loop and no reduced-motion check is made.",
   controls: [
-    { type: "text", prop: "children", label: "Label (children)", default: "Click me" },
+    { type: "text", prop: "children", label: "Label", default: "Click me" },
     { type: "color", prop: "rippleColor", label: "Ripple color", default: "#ffffff" },
     { type: "text", prop: "duration", label: "Duration (e.g. 600ms)", default: "600ms" },
   ],

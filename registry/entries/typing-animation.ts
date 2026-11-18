@@ -27,7 +27,7 @@ export const entry: RegistryEntry = {
   controls: [{
     type: "text",
     prop: "children",
-    label: "Text (children)",
+    label: "Text",
     default: "Hello, world.",
   }, {
     type: "number",
@@ -40,7 +40,7 @@ export const entry: RegistryEntry = {
   }, {
     type: "boolean",
     prop: "loop",
-    label: "Loop (type and delete repeatedly)",
+    label: "Loop (type and delete)",
     default: false,
   }, {
     type: "select",

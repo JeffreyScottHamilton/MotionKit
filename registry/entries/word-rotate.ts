@@ -27,7 +27,7 @@ export const entry: RegistryEntry = {
   controls: [{
     type: "text",
     prop: "words",
-    label: "Words (comma-separated; the demo splits them into the words array)",
+    label: "Words (comma-separated)",
     default: "Design, Build, Ship",
   }, {
     type: "number",

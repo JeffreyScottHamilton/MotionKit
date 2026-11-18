@@ -27,8 +27,8 @@ export const entry: RegistryEntry = {
   reducedMotion:
     "The outer ring stops rotating (motion-reduce:animate-none) and stays as a static gradient ring.",
   controls: [
-    { type: "text", prop: "outerSize", label: "Outer size classes (outerSize)", default: "h-12 w-12" },
-    { type: "text", prop: "childSize", label: "Inner circle size classes (childSize)", default: "h-10 w-10" },
+    { type: "text", prop: "outerSize", label: "Outer size (classes)", default: "h-12 w-12" },
+    { type: "text", prop: "childSize", label: "Inner circle size (classes)", default: "h-10 w-10" },
   ],
   usage: `import Spinner from "@/components/ui/spinner";
 

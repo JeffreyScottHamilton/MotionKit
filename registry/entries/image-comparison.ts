@@ -25,7 +25,7 @@ export const entry: RegistryEntry = {
   frameworks: ["next", "react"],
   reducedMotion: "No built-in guard. The slider moves only when the user drags or hovers; there is no autoplay.",
   controls: [
-    { type: "boolean", prop: "enableHover", label: "Follow pointer hover (enableHover)", default: false },
+    { type: "boolean", prop: "enableHover", label: "Follow pointer hover", default: false },
   ],
   usage: `import {
   ImageComparison,

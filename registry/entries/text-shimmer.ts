@@ -27,7 +27,7 @@ export const entry: RegistryEntry = {
   controls: [{
     type: "text",
     prop: "children",
-    label: "Text (children)",
+    label: "Text",
     default: "Thinking about your next move",
   }, {
     type: "number",

@@ -25,9 +25,9 @@ export const entry: RegistryEntry = {
   frameworks: ["next", "react"],
   reducedMotion: "No motion. Hover only changes a square's fill color, using a CSS color transition.",
   controls: [
-    { type: "number", prop: "columns", label: "Columns (demo maps to squares[0])", min: 4, max: 40, step: 1, default: 12 },
-    { type: "number", prop: "rows", label: "Rows (demo maps to squares[1])", min: 4, max: 30, step: 1, default: 8 },
-    { type: "number", prop: "cellSize", label: "Cell size in px (width and height)", min: 16, max: 80, step: 1, default: 40 },
+    { type: "number", prop: "columns", label: "Columns", min: 4, max: 40, step: 1, default: 12 },
+    { type: "number", prop: "rows", label: "Rows", min: 4, max: 30, step: 1, default: 8 },
+    { type: "number", prop: "cellSize", label: "Cell size (px)", min: 16, max: 80, step: 1, default: 40 },
   ],
   usage: `import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
 

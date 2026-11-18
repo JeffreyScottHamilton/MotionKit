@@ -28,7 +28,7 @@ export const entry: RegistryEntry = {
     { type: "number", prop: "intensity", label: "Intensity", min: 0, max: 1, step: 0.05, default: 0.6 },
     { type: "number", prop: "range", label: "Range (px)", min: 20, max: 300, step: 10, default: 100 },
     { type: "select", prop: "actionArea", label: "Action area", options: ["self", "parent", "global"], default: "self" },
-    { type: "text", prop: "children", label: "Label (children)", default: "Magnetic" },
+    { type: "text", prop: "children", label: "Label", default: "Magnetic" },
   ],
   usage: `import { Magnetic } from "@/components/ui/magnetic"
 

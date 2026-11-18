@@ -27,8 +27,8 @@ export const entry: RegistryEntry = {
   reducedMotion:
     "No reduced-motion guard. The bar scales with scroll position through a spring, so it still moves with scrolling under prefers-reduced-motion.",
   controls: [
-    { type: "number", prop: "stiffness", label: "Spring stiffness (springOptions.stiffness)", min: 50, max: 400, step: 10, default: 200 },
-    { type: "color", prop: "color", label: "Bar color (demo wrapper; sets currentColor)", default: "#d97706" },
+    { type: "number", prop: "stiffness", label: "Spring stiffness", min: 50, max: 400, step: 10, default: 200 },
+    { type: "color", prop: "color", label: "Bar color", default: "#d97706" },
   ],
   usage: `"use client";
 

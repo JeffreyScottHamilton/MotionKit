@@ -25,7 +25,7 @@ export const entry: RegistryEntry = {
   frameworks: ["next", "react"],
   reducedMotion: "No built-in guard. The cursor follows the pointer position and has no autoplay or looping motion.",
   controls: [
-    { type: "text", prop: "label", label: "Label inside the cursor (demo wrapper)", default: "Cursor" },
+    { type: "text", prop: "label", label: "Cursor label", default: "Cursor" },
   ],
   usage: `import { Cursor } from "@/components/ui/cursor";
 

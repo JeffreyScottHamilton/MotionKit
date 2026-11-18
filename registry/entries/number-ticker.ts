@@ -43,7 +43,7 @@ export const entry: RegistryEntry = {
   }, {
     type: "select",
     prop: "direction",
-    label: "Direction (down starts at the target)",
+    label: "Count direction",
     options: ["up", "down"],
     default: "up",
   }, {

@@ -29,7 +29,7 @@ export const entry: RegistryEntry = {
     {
       type: "number",
       prop: "activeIndex",
-      label: "Initial panel index (activeIndex)",
+      label: "Initial panel index",
       min: 0,
       max: 2,
       step: 1,

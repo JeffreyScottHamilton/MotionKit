@@ -30,7 +30,7 @@ export const entry: RegistryEntry = {
     {
       type: "number",
       prop: "duration",
-      label: "Transition duration in seconds (demo passes it to MorphingDialog transition)",
+      label: "Transition duration (s)",
       min: 0.1,
       max: 1,
       step: 0.05,

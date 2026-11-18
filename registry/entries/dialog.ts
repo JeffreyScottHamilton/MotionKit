@@ -27,7 +27,7 @@ export const entry: RegistryEntry = {
   reducedMotion:
     "No built-in guard: the dialog scales and fades in and out regardless of prefers-reduced-motion.",
   controls: [
-    { type: "boolean", prop: "defaultOpen", label: "Open on mount (defaultOpen)", default: false },
+    { type: "boolean", prop: "defaultOpen", label: "Open on mount", default: false },
   ],
   usage: `import {
   Dialog,
