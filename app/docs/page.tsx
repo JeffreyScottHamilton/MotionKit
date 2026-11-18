@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { DocPage } from "@/components/site/docs/doc-page";
-import { DOCS_LINKS } from "@/components/site/docs/docs-nav";
+import { DOCS_LINKS } from "@/components/site/docs/links";
 
 export default function DocsIndexPage() {
   return (

@@ -30,8 +30,13 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   };
 }
 
+/** Reads a file under registry/ only, so the build does not trace the whole project. */
 async function readRepoFile(repoPath: string): Promise<string> {
-  return readFile(path.join(process.cwd(), repoPath), "utf8");
+  if (!repoPath.startsWith("registry/") || repoPath.includes("..")) {
+    throw new Error(`Refusing to read registry path: ${repoPath}`);
+  }
+  const rest = repoPath.slice("registry/".length);
+  return readFile(path.join(process.cwd(), "registry", rest), "utf8");
 }
 
 /** Where a registry file lands in a consumer project (see the import note in Installation). */

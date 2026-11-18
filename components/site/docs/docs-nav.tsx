@@ -2,16 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-export const DOCS_LINKS = [
-  { href: "/docs/getting-started", label: "Getting started" },
-  { href: "/docs/installation", label: "Installation" },
-  { href: "/docs/frameworks", label: "Frameworks" },
-  { href: "/docs/customization", label: "Customization" },
-  { href: "/docs/accessibility", label: "Accessibility" },
-  { href: "/docs/contributing", label: "Contributing" },
-  { href: "/docs/licensing", label: "Licensing" },
-];
+import { DOCS_LINKS } from "@/components/site/docs/links";
 
 export function DocsNav() {
   const pathname = usePathname();
