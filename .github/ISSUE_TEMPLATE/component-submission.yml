@@ -1,0 +1,62 @@
+name: Component submission
+description: Suggest a component from an open-source project for MotionKit
+title: "[Component]: "
+labels: ["component-submission"]
+body:
+  - type: input
+    id: component-name
+    attributes:
+      label: Component name
+      description: The name of the component as it is called upstream.
+    validations:
+      required: true
+  - type: input
+    id: source-url
+    attributes:
+      label: Source URL
+      description: Link to the component's source file, pinned to a commit if possible.
+      placeholder: https://github.com/owner/repo/blob/<commit>/path/to/file.tsx
+    validations:
+      required: true
+  - type: dropdown
+    id: license
+    attributes:
+      label: License
+      description: The license of the source project, as verified in its repository.
+      options:
+        - MIT
+        - ISC
+        - BSD-2-Clause
+        - BSD-3-Clause
+        - Apache-2.0
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: license-link
+    attributes:
+      label: Link to the license file
+      placeholder: https://github.com/owner/repo/blob/<commit>/LICENSE
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: Author
+      description: The author or organization named in the source project.
+    validations:
+      required: true
+  - type: textarea
+    id: why-it-fits
+    attributes:
+      label: Why it fits MotionKit
+      description: What the component does and how it adds to the existing catalogue.
+    validations:
+      required: true
+  - type: checkboxes
+    id: redistribution
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have checked the license and confirm that it allows redistribution of this code, with its copyright notice kept.
+          required: true

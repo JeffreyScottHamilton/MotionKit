@@ -1,0 +1,27 @@
+name: Bug report
+description: Report a problem with the MotionKit site or a copied component
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: input
+    id: component
+    attributes:
+      label: Component or page
+      description: The component id or the page URL, if relevant.
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, operating system, Node.js version and framework (Next.js or React) you used.
+  - type: checkboxes
+    id: reduced-motion
+    attributes:
+      label: Motion preference
+      options:
+        - label: The problem also happens with "reduce motion" turned on in my system settings.
