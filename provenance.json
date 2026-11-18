@@ -1,1 +1,795 @@
-[]
+[
+  {
+    "id": "typing-animation",
+    "name": "Typing Animation",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/typing-animation.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils; added motion-reduce:animate-none to the blinking cursor."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/typing-animation.tsx"
+    ]
+  },
+  {
+    "id": "text-reveal",
+    "name": "Text Reveal",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/text-reveal.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/text-reveal.tsx"
+    ]
+  },
+  {
+    "id": "word-rotate",
+    "name": "Word Rotate",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/word-rotate.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils; added useReducedMotion guard that removes the vertical slide (fade only) under reduced motion."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/word-rotate.tsx"
+    ]
+  },
+  {
+    "id": "number-ticker",
+    "name": "Number Ticker",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/number-ticker.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/number-ticker.tsx"
+    ]
+  },
+  {
+    "id": "hyper-text",
+    "name": "Hyper Text",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/hyper-text.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/hyper-text.tsx"
+    ]
+  },
+  {
+    "id": "text-effect",
+    "name": "Text Effect",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/text-effect.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/text-effect.tsx"
+    ]
+  },
+  {
+    "id": "sliding-number",
+    "name": "Sliding Number",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/sliding-number.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Unmodified"
+    },
+    "dependencies": [
+      "motion",
+      "react-use-measure"
+    ],
+    "files": [
+      "registry/ui/sliding-number.tsx"
+    ]
+  },
+  {
+    "id": "text-scramble",
+    "name": "Text Scramble",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/text-scramble.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Lint-only: eslint-disable comments for react-hooks/static-components (motion.create during render) and react-hooks/set-state-in-effect (trigger effect); no runtime change."
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "files": [
+      "registry/ui/text-scramble.tsx"
+    ]
+  },
+  {
+    "id": "text-shimmer",
+    "name": "Text Shimmer",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/text-shimmer.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils; added useReducedMotion guard that stops the infinite shimmer sweep; eslint-disable comment for react-hooks/static-components (no runtime change)."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/text-shimmer.tsx"
+    ]
+  },
+  {
+    "id": "magnetic",
+    "name": "Magnetic",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/magnetic.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Added reduced-motion guard: useReducedMotion() pins x/y to 0 when prefers-reduced-motion is set. Added an eslint-disable comment for react-hooks/set-state-in-effect on one setIsHovered(true) line."
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "files": [
+      "registry/ui/magnetic.tsx"
+    ]
+  },
+  {
+    "id": "ripple-button",
+    "name": "Ripple Button",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/ripple-button.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils. The animate-rippling keyframes live in registry/styles/buttons.css."
+    },
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/ripple-button.tsx",
+      "registry/styles/buttons.css"
+    ]
+  },
+  {
+    "id": "interactive-hover-button",
+    "name": "Interactive Hover Button",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/interactive-hover-button.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils."
+    },
+    "dependencies": [
+      "lucide-react",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/interactive-hover-button.tsx"
+    ]
+  },
+  {
+    "id": "animated-subscribe-button",
+    "name": "Animated Subscribe Button",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/animated-subscribe-button.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/animated-subscribe-button.tsx"
+    ]
+  },
+  {
+    "id": "toggle-switch",
+    "name": "Toggle Switch",
+    "source": {
+      "project": "animata",
+      "projectName": "Animata",
+      "repoUrl": "https://github.com/codse/animata",
+      "fileUrl": "https://github.com/codse/animata/blob/25c27e5a874c60a56dcc1609df3b2c4f5f8456f8/animata/button/toggle-switch.tsx",
+      "commit": "25c27e5a874c60a56dcc1609df3b2c4f5f8456f8",
+      "author": "Animata (codse)",
+      "license": "MIT",
+      "notice": "Copyright (c) Animata. Licensed under the MIT License.",
+      "modified": "Unmodified"
+    },
+    "dependencies": [],
+    "files": [
+      "registry/ui/toggle-switch.tsx"
+    ]
+  },
+  {
+    "id": "status-button",
+    "name": "Status Button",
+    "source": {
+      "project": "animata",
+      "projectName": "Animata",
+      "repoUrl": "https://github.com/codse/animata",
+      "fileUrl": "https://github.com/codse/animata/blob/25c27e5a874c60a56dcc1609df3b2c4f5f8456f8/animata/button/status-button.tsx",
+      "commit": "25c27e5a874c60a56dcc1609df3b2c4f5f8456f8",
+      "author": "Animata (codse)",
+      "license": "MIT",
+      "notice": "Copyright (c) Animata. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils; added \"use client\"; spinner gets motion-reduce:animate-none."
+    },
+    "dependencies": [
+      "lucide-react",
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/status-button.tsx"
+    ]
+  },
+  {
+    "id": "animated-background",
+    "name": "Animated Background",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/animated-background.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import path rewritten from @/lib/utils to @/registry/lib/utils. Lint-only eslint-disable-next-line comments for react-hooks/set-state-in-effect and no-explicit-any."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/animated-background.tsx"
+    ]
+  },
+  {
+    "id": "fluid-tabs",
+    "name": "Fluid Tabs",
+    "source": {
+      "project": "animata",
+      "projectName": "Animata",
+      "repoUrl": "https://github.com/codse/animata",
+      "fileUrl": "https://github.com/codse/animata/blob/25c27e5a874c60a56dcc1609df3b2c4f5f8456f8/animata/tabs/fluid-tabs.tsx",
+      "commit": "25c27e5a874c60a56dcc1609df3b2c4f5f8456f8",
+      "author": "Animata (codse)",
+      "license": "MIT",
+      "notice": "Copyright (c) Animata. Licensed under the MIT License.",
+      "modified": "Import paths rewritten (@/lib/utils to @/registry/lib/utils; ./shared to @/registry/ui/fluid-tabs-shared). shared.ts copied as registry/ui/fluid-tabs-shared.ts."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/fluid-tabs.tsx",
+      "registry/ui/fluid-tabs-shared.ts"
+    ]
+  },
+  {
+    "id": "toolbar-expandable",
+    "name": "Toolbar Expandable",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/toolbar-expandable.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import paths rewritten (@/lib/utils to @/registry/lib/utils; @/hooks/useClickOutside to @/registry/hooks/useClickOutside); 'spring' typed as const in the transition object. Lint-only eslint-disable-next-line comment for react-hooks/set-state-in-effect."
+    },
+    "dependencies": [
+      "motion",
+      "lucide-react",
+      "react-use-measure",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/toolbar-expandable.tsx",
+      "registry/hooks/useClickOutside.tsx"
+    ]
+  },
+  {
+    "id": "accordion",
+    "name": "Accordion",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/accordion.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import path rewritten from @/lib/utils to @/registry/lib/utils; child cast typed as ReactElement<Record<string, unknown>> for React 19 types."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/accordion.tsx"
+    ]
+  },
+  {
+    "id": "dialog",
+    "name": "Dialog",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/dialog.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import paths rewritten (@/lib/utils to @/registry/lib/utils; @/hooks/usePreventScroll to @/registry/hooks/usePreventScroll). Lint-only eslint-disable-next-line comment for react-hooks/set-state-in-effect."
+    },
+    "dependencies": [
+      "motion",
+      "lucide-react",
+      "react-dom",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/dialog.tsx",
+      "registry/hooks/usePreventScroll.tsx"
+    ]
+  },
+  {
+    "id": "morphing-dialog",
+    "name": "Morphing Dialog",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/morphing-dialog.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import paths rewritten (@/lib/utils to @/registry/lib/utils; @/hooks/useClickOutside to @/registry/hooks/useClickOutside); reducedMotion=\"user\" added to the root MotionConfig in MorphingDialog so the morph is disabled under prefers-reduced-motion. Lint-only eslint-disable-next-line comment for react-hooks/set-state-in-effect."
+    },
+    "dependencies": [
+      "motion",
+      "lucide-react",
+      "react-dom",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/morphing-dialog.tsx",
+      "registry/hooks/useClickOutside.tsx"
+    ]
+  },
+  {
+    "id": "transition-panel",
+    "name": "Transition Panel",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/transition-panel.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import path rewritten from @/lib/utils to @/registry/lib/utils."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/transition-panel.tsx"
+    ]
+  },
+  {
+    "id": "disclosure",
+    "name": "Disclosure",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/disclosure.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import path rewritten from @/lib/utils to @/registry/lib/utils; child casts typed for React 19 types. Lint-only eslint-disable-next-line comments for react-hooks/set-state-in-effect and import/no-anonymous-default-export."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/disclosure.tsx"
+    ]
+  },
+  {
+    "id": "animated-circular-progress-bar",
+    "name": "Animated Circular Progress Bar",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/animated-circular-progress-bar.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Import path rewritten from @/lib/utils to @/registry/lib/utils. No other changes."
+    },
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/animated-circular-progress-bar.tsx"
+    ]
+  },
+  {
+    "id": "scroll-progress",
+    "name": "Scroll Progress",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/scroll-progress.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import path rewritten from @/lib/utils to @/registry/lib/utils; removed the layoutEffect option from useScroll (not in motion 12 types, and it read a ref during render)."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/scroll-progress.tsx"
+    ]
+  },
+  {
+    "id": "spinner",
+    "name": "Spinner",
+    "source": {
+      "project": "animata",
+      "projectName": "Animata",
+      "repoUrl": "https://github.com/codse/animata",
+      "fileUrl": "https://github.com/codse/animata/blob/25c27e5a874c60a56dcc1609df3b2c4f5f8456f8/animata/progress/spinner.tsx",
+      "commit": "25c27e5a874c60a56dcc1609df3b2c4f5f8456f8",
+      "author": "Animata (codse)",
+      "license": "MIT",
+      "notice": "Copyright (c) Animata. Licensed under the MIT License.",
+      "modified": "Import path rewritten from @/lib/utils to @/registry/lib/utils; added motion-reduce:animate-none to the outer element so the continuous spin stops under prefers-reduced-motion."
+    },
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/spinner.tsx"
+    ]
+  },
+  {
+    "id": "skeleton-list",
+    "name": "Skeleton List",
+    "source": {
+      "project": "animata",
+      "projectName": "Animata",
+      "repoUrl": "https://github.com/codse/animata",
+      "fileUrl": "https://github.com/codse/animata/blob/25c27e5a874c60a56dcc1609df3b2c4f5f8456f8/animata/skeleton/list.tsx",
+      "commit": "25c27e5a874c60a56dcc1609df3b2c4f5f8456f8",
+      "author": "Animata (codse)",
+      "license": "MIT",
+      "notice": "Copyright (c) Animata. Licensed under the MIT License.",
+      "modified": "Unmodified"
+    },
+    "dependencies": [],
+    "files": [
+      "registry/ui/skeleton-list.tsx"
+    ]
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/cursor.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils; no other code changes."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/cursor.tsx"
+    ]
+  },
+  {
+    "id": "tilt",
+    "name": "Tilt",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/tilt.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Unmodified"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "files": [
+      "registry/ui/tilt.tsx"
+    ]
+  },
+  {
+    "id": "image-comparison",
+    "name": "Image Comparison",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/image-comparison.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils; no other code changes."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/image-comparison.tsx"
+    ]
+  },
+  {
+    "id": "blur-fade",
+    "name": "Blur Fade",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/blur-fade.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Unmodified"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "files": [
+      "registry/ui/blur-fade.tsx"
+    ]
+  },
+  {
+    "id": "in-view",
+    "name": "In View",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/in-view.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Unmodified"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "files": [
+      "registry/ui/in-view.tsx"
+    ]
+  },
+  {
+    "id": "interactive-grid-pattern",
+    "name": "Interactive Grid Pattern",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/interactive-grid-pattern.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils; no other code changes."
+    },
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/interactive-grid-pattern.tsx"
+    ]
+  },
+  {
+    "id": "marquee",
+    "name": "Marquee",
+    "source": {
+      "project": "magicui",
+      "projectName": "Magic UI",
+      "repoUrl": "https://github.com/magicuidesign/magicui",
+      "fileUrl": "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/marquee.tsx",
+      "commit": "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+      "author": "Magic UI",
+      "license": "MIT",
+      "notice": "Copyright (c) Magic UI. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils; added motion-reduce:animate-none to the looping track (no other code changes)."
+    },
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/marquee.tsx"
+    ]
+  },
+  {
+    "id": "spotlight",
+    "name": "Spotlight",
+    "source": {
+      "project": "motion-primitives",
+      "projectName": "motion-primitives",
+      "repoUrl": "https://github.com/ibelick/motion-primitives",
+      "fileUrl": "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/spotlight.tsx",
+      "commit": "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+      "author": "ibelick",
+      "license": "MIT",
+      "notice": "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+      "modified": "Import path rewritten to @/registry/lib/utils; no other code changes."
+    },
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      "registry/ui/spotlight.tsx"
+    ]
+  }
+]

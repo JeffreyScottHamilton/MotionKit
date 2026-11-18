@@ -37,7 +37,8 @@ export const entry: RegistryEntry = {
       default: 0,
     },
   ],
-  usage: `import FluidTabs from "@/components/ui/fluid-tabs";
+  usage: `// Also copy fluid-tabs-shared.ts next to fluid-tabs.tsx.
+import FluidTabs from "@/components/ui/fluid-tabs";
 
 export function Example() {
   return (

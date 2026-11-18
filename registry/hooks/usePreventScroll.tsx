@@ -1,6 +1,7 @@
 /**
  * usePreventScroll — from motion-primitives (https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/hooks/usePreventScroll.tsx)
  * Original author: ibelick. License: MIT. Copyright (c) 2024 ibelick. Licensed under the MIT License.
+ * Portions derived from adobe/react-spectrum (https://github.com/adobe/react-spectrum/blob/2ac28d36146c2acd008fc397fbd36535e894a516/packages/react-aria/src/overlays/usePreventScroll.ts), Copyright 2020 Adobe, Apache License 2.0 — see THIRD_PARTY_NOTICES.md.
  * Note: the upstream file states it is derived from adobe/react-spectrum (Apache-2.0); that origin note is kept below.
  * Modified: Lint-only: eslint-disable directive for prefer-const, no-explicit-any and ban-ts-comment; code otherwise unchanged.
  */

@@ -46,9 +46,38 @@ export const SOURCES: SourceInfo[] = [
     id: "shadcn",
     projectName: "shadcn/ui",
     repoUrl: "https://github.com/shadcn-ui/ui",
-    commit: "n/a (components installed with the shadcn CLI; see package-lock.json for the CLI version)",
+    commit: "968d8cb9dc42ae5d52e8fd356cf84596ec832a26",
     copyright: "Copyright (c) 2023 shadcn",
     licenseFile: "shadcn.txt",
     licenseFor: "site UI primitives in components/ui",
+  },
+];
+
+/**
+ * Upstream code inside a registry file that is governed by a license other than
+ * the one named in the file's primary SOURCES entry. Rendered as "Additional notices".
+ */
+export interface AdditionalNotice {
+  projectName: string;
+  repoUrl: string;
+  commit: string;
+  copyright: string;
+  fileUrl: string;
+  appliesTo: string[]; // registry files that contain the derived code
+  licenseName: string;
+  licenseFile: string; // relative to scripts/licenses/
+}
+
+export const ADDITIONAL_NOTICES: AdditionalNotice[] = [
+  {
+    projectName: "adobe/react-spectrum",
+    repoUrl: "https://github.com/adobe/react-spectrum",
+    commit: "2ac28d36146c2acd008fc397fbd36535e894a516",
+    copyright: "Copyright 2020 Adobe. All rights reserved.",
+    fileUrl:
+      "https://github.com/adobe/react-spectrum/blob/2ac28d36146c2acd008fc397fbd36535e894a516/packages/react-aria/src/overlays/usePreventScroll.ts",
+    appliesTo: ["registry/hooks/usePreventScroll.tsx"],
+    licenseName: "Apache License 2.0",
+    licenseFile: "react-spectrum-apache-2.0.txt",
   },
 ];
