@@ -58,3 +58,17 @@ export function buildUrlQuery(state: UrlState): string {
   if (state.favoritesOnly) params.set("fav", "1");
   return params.toString();
 }
+
+/**
+ * Tracks canonical query strings this page wrote via router.replace. When the URL changes to one of them,
+ * it is our own echo (the pending entries up to it are consumed and the local state is kept). Any other URL
+ * change came from outside (back/forward, a link) and the state should be re-derived from it.
+ */
+export function reconcilePendingWrites(
+  pending: readonly string[],
+  urlQuery: string,
+): { isEcho: boolean; pending: string[] } {
+  const index = pending.indexOf(urlQuery);
+  if (index >= 0) return { isEcho: true, pending: pending.slice(index + 1) };
+  return { isEcho: false, pending: [] };
+}

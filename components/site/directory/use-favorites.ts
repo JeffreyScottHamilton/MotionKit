@@ -25,30 +25,40 @@ function writeFavorites(favorites: string[]): void {
 
 export interface UseFavorites {
   favorites: string[];
+  /** False until favorites have been read from localStorage (always false during SSR and the first render). */
+  loaded: boolean;
   isFavorite: (id: string) => boolean;
   toggle: (id: string) => void;
 }
 
+interface FavoritesStore {
+  favorites: string[];
+  loaded: boolean;
+}
+
 /** Favorite component ids persisted in localStorage. Starts empty so server and first client render match. */
 export function useFavorites(): UseFavorites {
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [store, setStore] = useState<FavoritesStore>({ favorites: [], loaded: false });
+  const { favorites, loaded } = store;
 
   useEffect(() => {
     // Intentional: favorites live in localStorage, which is unreadable during SSR and hydration.
     // Loading once after mount keeps the first render identical to the server HTML.
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setFavorites(readFavorites());
+    setStore({ favorites: readFavorites(), loaded: true });
   }, []);
 
   const isFavorite = useCallback((id: string) => favorites.includes(id), [favorites]);
 
-  const toggle = useCallback((id: string) => {
-    setFavorites((current) => {
-      const next = current.includes(id) ? current.filter((item) => item !== id) : [...current, id];
+  const toggle = useCallback(
+    (id: string) => {
+      // Compute the next list from the current render's value, then update state and storage outside any updater.
+      const next = favorites.includes(id) ? favorites.filter((item) => item !== id) : [...favorites, id];
+      setStore((current) => ({ ...current, favorites: next }));
       writeFavorites(next);
-      return next;
-    });
-  }, []);
+    },
+    [favorites],
+  );
 
-  return { favorites, isFavorite, toggle };
+  return { favorites, loaded, isFavorite, toggle };
 }

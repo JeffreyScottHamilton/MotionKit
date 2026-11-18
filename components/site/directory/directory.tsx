@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useId, useMemo, useState, Suspense, type ComponentType } from "react";
+import { useEffect, useId, useMemo, useRef, useState, Suspense, type ComponentType } from "react";
 import { Star } from "lucide-react";
 import type { RegistryEntry, SourceId } from "@/registry/schema";
 import { demos } from "@/registry/demos";
@@ -23,7 +23,17 @@ import {
 import { filterEntries } from "./filter";
 import { ANIMATION_TYPE_OPTIONS, CATEGORY_OPTIONS, COMPLEXITY_OPTIONS } from "./options";
 import { useFavorites } from "./use-favorites";
-import { buildUrlQuery, emptyUrlState, parseUrlState, type UrlState } from "./url-state";
+import { useMediaQuery } from "./use-media-query";
+import {
+  buildUrlQuery,
+  emptyUrlState,
+  parseUrlState,
+  reconcilePendingWrites,
+  type UrlState,
+} from "./url-state";
+
+/** Share of a card that must be visible before it starts its live preview on touch devices. */
+const AUTO_PREVIEW_RATIO = 0.6;
 
 type ListKey = "categories" | "animationTypes" | "complexities" | "sources" | "dependencies";
 
@@ -60,6 +70,7 @@ function DirectoryView({ entries }: { entries: RegistryEntry[] }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const searchId = useId();
+  const listRef = useRef<HTMLUListElement>(null);
 
   const dependencyOptions = useMemo(
     () => Array.from(new Set(entries.flatMap((entry) => entry.dependencies))).sort(),
@@ -71,14 +82,65 @@ function DirectoryView({ entries }: { entries: RegistryEntry[] }) {
     return Array.from(byId, ([value, label]) => ({ value, label }));
   }, [entries]);
 
+  // Canonical query for the current URL. Changes on back/forward and client navigations, not only on our own writes.
+  const paramsKey = searchParams.toString();
+  const urlQuery = useMemo(
+    () => buildUrlQuery(parseUrlState(new URLSearchParams(paramsKey), dependencyOptions)),
+    [paramsKey, dependencyOptions],
+  );
+
   const [state, setState] = useState<UrlState>(() => parseUrlState(searchParams, dependencyOptions));
+  const stateRef = useRef(state);
+  const pendingWrites = useRef<string[]>([]);
+
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state]);
+
+  // Re-derive the facet state when the URL changes from outside this page. Our own router.replace echoes are ignored
+  // so typing is not overwritten by a stale URL.
+  useEffect(() => {
+    const { isEcho, pending } = reconcilePendingWrites(pendingWrites.current, urlQuery);
+    pendingWrites.current = pending;
+    if (isEcho || urlQuery === buildUrlQuery(stateRef.current)) return;
+    setState(parseUrlState(new URLSearchParams(urlQuery), dependencyOptions));
+  }, [urlQuery, dependencyOptions]);
+
   const [previewId, setPreviewId] = useState<string | null>(null);
-  const { favorites, isFavorite, toggle } = useFavorites();
+  const [autoPreviewId, setAutoPreviewId] = useState<string | null>(null);
+  const coarsePointer = useMediaQuery("(hover: none)");
+  // At most one live preview: a hover/focus preview wins, otherwise the touch auto-preview.
+  const activePreviewId = previewId ?? (coarsePointer ? autoPreviewId : null);
+
+  const { favorites, loaded: favoritesLoaded, isFavorite, toggle } = useFavorites();
+  const favoritesPending = state.favoritesOnly && !favoritesLoaded;
 
   const results = useMemo(
     () => filterEntries(entries, { ...state, favorites }),
     [entries, state, favorites],
   );
+
+  // Touch devices have no hover: start the preview of the card that is most in view, one card at a time.
+  useEffect(() => {
+    const list = listRef.current;
+    if (!coarsePointer || !list) return;
+    const observer = new IntersectionObserver(
+      (records) => {
+        for (const record of records) {
+          const id = (record.target as HTMLElement).dataset.entryId;
+          if (id === undefined) continue;
+          if (record.isIntersecting && record.intersectionRatio >= AUTO_PREVIEW_RATIO) {
+            setAutoPreviewId(id);
+          } else {
+            setAutoPreviewId((current) => (current === id ? null : current));
+          }
+        }
+      },
+      { threshold: AUTO_PREVIEW_RATIO },
+    );
+    for (const card of list.querySelectorAll<HTMLElement>("[data-entry-id]")) observer.observe(card);
+    return () => observer.disconnect();
+  }, [coarsePointer, results]);
 
   const hasActive = buildUrlQuery(state) !== "";
   const activeCount = countActive(state);
@@ -86,6 +148,10 @@ function DirectoryView({ entries }: { entries: RegistryEntry[] }) {
   function update(next: UrlState) {
     setState(next);
     const query = buildUrlQuery(next);
+    const pending = pendingWrites.current;
+    const latest = pending.length > 0 ? pending[pending.length - 1] : urlQuery;
+    if (query === latest) return;
+    pendingWrites.current = [...pending, query];
     router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
   }
 
@@ -137,7 +203,9 @@ function DirectoryView({ entries }: { entries: RegistryEntry[] }) {
             <SheetFooter>
               <SheetClose asChild>
                 <Button type="button">
-                  Show {results.length} {results.length === 1 ? "component" : "components"}
+                  {favoritesPending
+                    ? "Loading favorites…"
+                    : `Show ${results.length} ${results.length === 1 ? "component" : "components"}`}
                 </Button>
               </SheetClose>
             </SheetFooter>
@@ -153,16 +221,20 @@ function DirectoryView({ entries }: { entries: RegistryEntry[] }) {
         <div className="flex min-w-0 flex-1 flex-col gap-4">
           <div className="flex items-center justify-between gap-4 text-sm">
             <p aria-live="polite" className="text-muted-foreground">
-              {hasActive
-                ? `${results.length} of ${entries.length} components`
-                : `${entries.length} components`}
+              {favoritesPending
+                ? "Loading favorites…"
+                : hasActive
+                  ? `${results.length} of ${entries.length} components`
+                  : `${entries.length} components`}
             </p>
             <Button type="button" variant="ghost" size="sm" onClick={clear} disabled={!hasActive}>
               Clear filters
             </Button>
           </div>
 
-          {results.length === 0 ? (
+          {favoritesPending ? (
+            <p className="text-sm text-muted-foreground">Loading favorites…</p>
+          ) : results.length === 0 ? (
             <div className="flex flex-col items-start gap-3 rounded-md border border-border p-6">
               <p className="text-sm text-muted-foreground">No components match these filters.</p>
               <Button type="button" variant="outline" size="sm" onClick={clear}>
@@ -170,13 +242,13 @@ function DirectoryView({ entries }: { entries: RegistryEntry[] }) {
               </Button>
             </div>
           ) : (
-            <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <ul ref={listRef} className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {results.map((entry) => (
                 <EntryCard
                   key={entry.id}
                   entry={entry}
                   favorite={isFavorite(entry.id)}
-                  previewing={previewId === entry.id}
+                  previewing={activePreviewId === entry.id}
                   onPreview={setPreviewId}
                   onToggleFavorite={() => toggle(entry.id)}
                 />
@@ -305,6 +377,7 @@ function EntryCard({ entry, favorite, previewing, onPreview, onToggleFavorite }:
 
   return (
     <li
+      data-entry-id={entry.id}
       className="relative flex flex-col overflow-hidden rounded-md border border-border bg-background"
       onMouseEnter={() => onPreview(entry.id)}
       onMouseLeave={() => onPreview(null)}
