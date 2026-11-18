@@ -1,0 +1,53 @@
+import type { RegistryEntry } from "../schema";
+
+export const entry: RegistryEntry = {
+  id: "hyper-text",
+  name: "Hyper Text",
+  description: "Scrambles each letter through random uppercase characters before settling on the text, on mount or on hover.",
+  category: "text",
+  tags: ["text", "scramble", "hover", "letters"],
+  animationType: ["hover", "entrance"],
+  complexity: "simple",
+  source: {
+    project: "magicui",
+    projectName: "Magic UI",
+    repoUrl: "https://github.com/magicuidesign/magicui",
+    fileUrl: "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/hyper-text.tsx",
+    commit: "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+    author: "Magic UI",
+    license: "MIT",
+    notice: "Copyright (c) Magic UI. Licensed under the MIT License.",
+    modified: "Import path rewritten to @/registry/lib/utils.",
+  },
+  dependencies: ["motion", "clsx", "tailwind-merge"],
+  files: ["registry/ui/hyper-text.tsx"],
+  installation: "copy",
+  frameworks: ["next", "react"],
+  reducedMotion: "No guard. Letters are swapped for random characters over the duration; no positional movement is applied, so prefers-reduced-motion does not disable it.",
+  controls: [{
+    type: "text",
+    prop: "children",
+    label: "Text (children)",
+    default: "Motion Kit",
+  }, {
+    type: "number",
+    prop: "duration",
+    label: "Duration (ms)",
+    min: 200,
+    max: 3000,
+    step: 100,
+    default: 800,
+  }, {
+    type: "boolean",
+    prop: "startOnView",
+    label: "Start when in view (otherwise on mount)",
+    default: false,
+  }, {
+    type: "boolean",
+    prop: "animateOnHover",
+    label: "Re-run on hover",
+    default: true,
+  }],
+  usage: "import { HyperText } from \"@/components/ui/hyper-text\";\n\nexport function Example() {\n  return (\n    <HyperText duration={ {{duration}} } animateOnHover={ {{animateOnHover}} }>\n      {{children}}\n    </HyperText>\n  );\n}\n",
+  addedAt: "2026-11-18",
+};

@@ -1,0 +1,43 @@
+import type { RegistryEntry } from "../schema";
+
+export const entry: RegistryEntry = {
+  id: "sliding-number",
+  name: "Sliding Number",
+  description: "Shows a number by rolling each digit on a spring, so digits animate only when the value changes.",
+  category: "text",
+  tags: ["number", "digits", "counter", "spring"],
+  animationType: ["state"],
+  complexity: "moderate",
+  source: {
+    project: "motion-primitives",
+    projectName: "motion-primitives",
+    repoUrl: "https://github.com/ibelick/motion-primitives",
+    fileUrl: "https://github.com/ibelick/motion-primitives/blob/120f64f6ca60348e251f929e9c81f11ccbe45eda/components/core/sliding-number.tsx",
+    commit: "120f64f6ca60348e251f929e9c81f11ccbe45eda",
+    author: "ibelick",
+    license: "MIT",
+    notice: "Copyright (c) 2024 ibelick. Licensed under the MIT License.",
+    modified: "Unmodified",
+  },
+  dependencies: ["motion", "react-use-measure"],
+  files: ["registry/ui/sliding-number.tsx"],
+  installation: "copy",
+  frameworks: ["next", "react"],
+  reducedMotion: "No built-in guard. Digits move with a spring transform only when the value changes; MotionConfig reducedMotion=\"user\" would skip that transform if the app sets it.",
+  controls: [{
+    type: "number",
+    prop: "value",
+    label: "Value",
+    min: 0,
+    max: 9999,
+    step: 1,
+    default: 1234,
+  }, {
+    type: "boolean",
+    prop: "padStart",
+    label: "Pad single digits with a leading zero",
+    default: false,
+  }],
+  usage: "import { SlidingNumber } from \"@/components/ui/sliding-number\";\n\nexport function Example() {\n  return <SlidingNumber value={ {{value}} } padStart={ {{padStart}} } />;\n}\n",
+  addedAt: "2026-11-18",
+};

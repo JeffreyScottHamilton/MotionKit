@@ -1,0 +1,43 @@
+import type { RegistryEntry } from "../schema";
+
+export const entry: RegistryEntry = {
+  id: "word-rotate",
+  name: "Word Rotate",
+  description: "Cycles through a list of words at a fixed interval, fading and sliding each word in and out.",
+  category: "text",
+  tags: ["words", "rotate", "text", "loop"],
+  animationType: ["loop"],
+  complexity: "simple",
+  source: {
+    project: "magicui",
+    projectName: "Magic UI",
+    repoUrl: "https://github.com/magicuidesign/magicui",
+    fileUrl: "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/word-rotate.tsx",
+    commit: "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+    author: "Magic UI",
+    license: "MIT",
+    notice: "Copyright (c) Magic UI. Licensed under the MIT License.",
+    modified: "Import path rewritten to @/registry/lib/utils; added useReducedMotion guard that removes the vertical slide (fade only) under reduced motion.",
+  },
+  dependencies: ["motion", "clsx", "tailwind-merge"],
+  files: ["registry/ui/word-rotate.tsx"],
+  installation: "copy",
+  frameworks: ["next", "react"],
+  reducedMotion: "Under prefers-reduced-motion the vertical slide is removed and words only fade in and out. The rotation interval is unchanged.",
+  controls: [{
+    type: "text",
+    prop: "words",
+    label: "Words (comma-separated; the demo splits them into the words array)",
+    default: "Design, Build, Ship",
+  }, {
+    type: "number",
+    prop: "duration",
+    label: "Duration (ms per word)",
+    min: 500,
+    max: 5000,
+    step: 100,
+    default: 2500,
+  }],
+  usage: "import { WordRotate } from \"@/components/ui/word-rotate\";\n\nexport function Example() {\n  return (\n    <WordRotate\n      words={[\"Design\", \"Build\", \"Ship\"]}\n      duration={ {{duration}} }\n      className=\"text-4xl font-semibold\"\n    />\n  );\n}\n",
+  addedAt: "2026-11-18",
+};

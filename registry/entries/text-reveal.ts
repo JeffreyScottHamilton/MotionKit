@@ -1,0 +1,35 @@
+import type { RegistryEntry } from "../schema";
+
+export const entry: RegistryEntry = {
+  id: "text-reveal",
+  name: "Text Reveal",
+  description: "Reveals a sentence word by word as the page scrolls; progress is tied to window scroll, so the preview needs a scrollable page.",
+  category: "text",
+  tags: ["scroll", "reveal", "text", "scroll-linked"],
+  animationType: ["scroll"],
+  complexity: "simple",
+  source: {
+    project: "magicui",
+    projectName: "Magic UI",
+    repoUrl: "https://github.com/magicuidesign/magicui",
+    fileUrl: "https://github.com/magicuidesign/magicui/blob/b0b2e4974b1b68cd5278277c6837a27736e20c3a/apps/www/registry/magicui/text-reveal.tsx",
+    commit: "b0b2e4974b1b68cd5278277c6837a27736e20c3a",
+    author: "Magic UI",
+    license: "MIT",
+    notice: "Copyright (c) Magic UI. Licensed under the MIT License.",
+    modified: "Import path rewritten to @/registry/lib/utils.",
+  },
+  dependencies: ["motion", "clsx", "tailwind-merge"],
+  files: ["registry/ui/text-reveal.tsx"],
+  installation: "copy",
+  frameworks: ["next", "react"],
+  reducedMotion: "No guard. Word opacity follows scroll position rather than time and no movement is applied, so prefers-reduced-motion has no effect.",
+  controls: [{
+    type: "text",
+    prop: "children",
+    label: "Text (children)",
+    default: "Scroll down to reveal this sentence one word at a time.",
+  }],
+  usage: "import { TextReveal } from \"@/components/ui/text-reveal\";\n\nexport function Example() {\n  return <TextReveal>{{children}}</TextReveal>;\n}\n",
+  addedAt: "2026-11-18",
+};
