@@ -1,8 +1,17 @@
-export default function DocsPage() {
+import Link from "next/link";
+import { DocPage } from "@/components/site/docs/doc-page";
+import { DOCS_LINKS } from "@/components/site/docs/docs-nav";
+
+export default function DocsIndexPage() {
   return (
-    <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-semibold tracking-tight">Docs</h1>
-      <p className="text-muted-foreground">Documentation is coming soon.</p>
-    </div>
+    <DocPage title="Docs" description="How MotionKit components are found, copied and maintained.">
+      <ul>
+        {DOCS_LINKS.map((item) => (
+          <li key={item.href}>
+            <Link href={item.href}>{item.label}</Link>
+          </li>
+        ))}
+      </ul>
+    </DocPage>
   );
 }
