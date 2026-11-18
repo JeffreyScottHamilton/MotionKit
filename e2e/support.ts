@@ -33,6 +33,17 @@ export function collectErrors(page: Page): string[] {
   return errors;
 }
 
+/**
+ * Mirrors the copy view in components/site/detail/install.ts (keep in sync): rewrites
+ * registry import specifiers to @/lib/utils, @/components/ui/X and @/hooks/X.
+ */
+export function rewriteRegistryImports(code: string): string {
+  return code
+    .replace(/(\bfrom\s*|\bimport\s*\(?\s*)(["'])@\/registry\/lib\/utils\2/g, "$1$2@/lib/utils$2")
+    .replace(/(\bfrom\s*|\bimport\s*\(?\s*)(["'])@\/registry\/ui\/([^"'\n]+)\2/g, "$1$2@/components/ui/$3$2")
+    .replace(/(\bfrom\s*|\bimport\s*\(?\s*)(["'])@\/registry\/hooks\/([^"'\n]+)\2/g, "$1$2@/hooks/$3$2");
+}
+
 /** The live preview region inside the Playground section (data-testid="playground-preview"). */
 export function playgroundPreview(page: Page) {
   return page.getByTestId("playground-preview");

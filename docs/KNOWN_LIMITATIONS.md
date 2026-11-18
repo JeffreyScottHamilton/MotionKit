@@ -1,7 +1,7 @@
 # Known limitations
 
 - **Copy-paste only.** MotionKit has no CLI and no npm package. Components are copied into your project by hand.
-- **Import paths.** Copied files import `cn` from `@/registry/lib/utils`. Change that import to match your project's helper.
+- **Import paths.** The copy view rewrites registry imports to the shadcn-style `@/components/ui`, `@/hooks` and `@/lib/utils` aliases. Projects that use other aliases must adjust them. The original files in `registry/` still import from `@/registry/...`.
 - **Reduced motion varies.** How each component behaves under `prefers-reduced-motion` differs. See the reduced-motion note on each component page.
 - **No animated drawer or parallax component yet.** No source with an approved license has been imported for these.
 - **Aceternity UI and Hover.dev are not included.** Their license has not been verified.

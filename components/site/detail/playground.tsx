@@ -106,39 +106,69 @@ function ControlField({
         </div>
       );
     }
-    case "color": {
-      const current = typeof value === "string" && HEX.test(value) ? value : control.default;
-      const hexId = `${id}-hex`;
-      return (
-        <div className="flex flex-col gap-2">
-          <Label htmlFor={id}>{control.label}</Label>
-          <div className="flex items-center gap-2">
-            <input
-              id={id}
-              type="color"
-              value={HEX.test(current) ? current : "#000000"}
-              onChange={(event) => onChange(control.prop, event.target.value)}
-              className="h-9 w-12 cursor-pointer rounded-md border border-border bg-background p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
-            />
-            <Input
-              id={hexId}
-              aria-label={`${control.label} hex value`}
-              value={current}
-              onChange={(event) => onChange(control.prop, event.target.value)}
-              className="font-mono focus-visible:ring-brand"
-              spellCheck={false}
-            />
-          </div>
-        </div>
-      );
-    }
+    case "color":
+      return <ColorControl control={control} value={value} onChange={onChange} />;
   }
+}
+
+/**
+ * Native picker plus hex text input. The text input keeps its own draft so partial
+ * input (e.g. "#1") is not replaced by the default; only a full #rrggbb value is pushed.
+ */
+function ColorControl({
+  control,
+  value,
+  onChange,
+}: {
+  control: Extract<Control, { type: "color" }>;
+  value: ControlValue;
+  onChange: (prop: string, value: ControlValue) => void;
+}) {
+  const id = useId();
+  const hexId = `${id}-hex`;
+  const current = typeof value === "string" && HEX.test(value) ? value : control.default;
+  const [draft, setDraft] = useState(current);
+
+  function handleText(text: string) {
+    setDraft(text);
+    if (HEX.test(text)) onChange(control.prop, text);
+  }
+
+  function handlePicker(next: string) {
+    setDraft(next);
+    onChange(control.prop, next);
+  }
+
+  return (
+    <div className="flex flex-col gap-2">
+      <Label htmlFor={id}>{control.label}</Label>
+      <div className="flex items-center gap-2">
+        <input
+          id={id}
+          type="color"
+          value={HEX.test(current) ? current : "#000000"}
+          onChange={(event) => handlePicker(event.target.value)}
+          className="h-9 w-12 cursor-pointer rounded-md border border-border bg-background p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+        />
+        <Input
+          id={hexId}
+          aria-label={`${control.label} hex value`}
+          value={draft}
+          onChange={(event) => handleText(event.target.value)}
+          className="font-mono focus-visible:ring-brand"
+          spellCheck={false}
+        />
+      </div>
+    </div>
+  );
 }
 
 export function Playground({ entry }: { entry: RegistryEntry }) {
   const initial = useMemo(() => defaultValues(entry.controls), [entry.controls]);
   const [values, setValues] = useState<Values>(initial);
   const [replay, setReplay] = useState(0);
+  // Bumped on Reset so every control remounts and drops any unpushed text draft.
+  const [resetCount, setResetCount] = useState(0);
   const Demo = demos[entry.id];
 
   const usage = useMemo(() => fillUsage(entry.usage, values), [entry.usage, values]);
@@ -175,7 +205,10 @@ export function Playground({ entry }: { entry: RegistryEntry }) {
                 type="button"
                 variant="outline"
                 size="sm"
-                onClick={() => setValues(initial)}
+                onClick={() => {
+                  setValues(initial);
+                  setResetCount((n) => n + 1);
+                }}
                 className="focus-visible:ring-brand"
               >
                 <RotateCcw aria-hidden="true" className="size-3.5" />
@@ -189,7 +222,7 @@ export function Playground({ entry }: { entry: RegistryEntry }) {
               <legend className="px-1 text-sm font-medium">Controls</legend>
               {entry.controls.map((control) => (
                 <ControlField
-                  key={control.prop}
+                  key={`${resetCount}:${control.prop}`}
                   control={control}
                   value={values[control.prop]}
                   onChange={handleChange}

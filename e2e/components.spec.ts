@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
-import { collectErrors, loadProvenance, playgroundPreview, playgroundUsage, repoFile } from "./support";
+import { collectErrors, loadProvenance, playgroundPreview, playgroundUsage, repoFile, rewriteRegistryImports } from "./support";
 
 const rows = loadProvenance();
 
@@ -37,8 +37,38 @@ test.describe("component pages", () => {
       await expect(codeSection.getByRole("button", { name: /^Copy/ }).first()).toHaveText(/Copied/);
 
       const clipboard = await page.evaluate(() => navigator.clipboard.readText());
-      const expected = readFileSync(repoFile(row.files[0]), "utf8");
+      // The copy view rewrites registry imports to the install aliases (see rewriteRegistryImports).
+      const expected = rewriteRegistryImports(readFileSync(repoFile(row.files[0]), "utf8"));
       expect(clipboard).toBe(expected);
+    });
+
+    test(`${row.id}: color hex input keeps a partial draft while typing and Reset clears it`, async ({ page }) => {
+      await page.goto(`/components/${row.id}`);
+
+      const section = page.locator('section[aria-labelledby="playground-heading"]');
+      const hex = section.locator('input[aria-label$="hex value"]');
+      if ((await hex.count()) === 0) {
+        test.info().annotations.push({ type: "info", description: "no color control on this page" });
+        return;
+      }
+
+      // Pages can have several color controls; the first picker belongs to the first hex input.
+      const picker = section.locator('input[type="color"]').first();
+      const initial = await picker.inputValue();
+
+      await hex.first().fill("");
+      await hex.first().pressSequentially("#12ab3f", { delay: 20 });
+      await expect(hex.first()).toHaveValue("#12ab3f");
+      await expect(picker).toHaveValue("#12ab3f");
+
+      // A partial value must stay in the text input and not change the picker.
+      await hex.first().fill("#1");
+      await expect(hex.first()).toHaveValue("#1");
+      await expect(picker).toHaveValue("#12ab3f");
+
+      await section.getByRole("button", { name: "Reset" }).click();
+      await expect(hex.first()).toHaveValue(initial);
+      await expect(picker).toHaveValue(initial);
     });
 
     test(`${row.id}: changing a control changes the generated usage`, async ({ page }) => {

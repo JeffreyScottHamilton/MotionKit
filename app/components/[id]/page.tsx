@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Playground } from "@/components/site/detail/playground";
 import { CodeBlock, CodeFiles, type SourceFile } from "@/components/site/detail/code-block";
 import { defaultValues, fillUsage } from "@/components/site/detail/usage";
+import { rewriteRegistryImports, usesCn } from "@/components/site/detail/install";
 
 export function generateStaticParams() {
   return registry.map((entry) => ({ id: entry.id }));
@@ -39,6 +40,16 @@ async function readRepoFile(repoPath: string): Promise<string> {
   return readFile(path.join(process.cwd(), "registry", rest), "utf8");
 }
 
+/** Like readRepoFile, but a missing file (ENOENT only) resolves to null. */
+async function readOptionalRepoFile(repoPath: string): Promise<string | null> {
+  try {
+    return await readRepoFile(repoPath);
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
+    throw error;
+  }
+}
+
 /** Where a registry file lands in a consumer project (see the import note in Installation). */
 function installPath(repoPath: string): string {
   if (repoPath.startsWith("registry/ui/")) return `components/ui/${repoPath.slice("registry/ui/".length)}`;
@@ -66,13 +77,24 @@ export default async function ComponentPage({ params }: { params: Promise<{ id: 
     notFound();
   }
 
-  const files: SourceFile[] = await Promise.all(
-    entry.files.map(async (file) => ({ path: file, code: await readRepoFile(file) })),
+  const rawFiles = await Promise.all(
+    entry.files.map(async (file) => ({ path: file, raw: await readRepoFile(file) })),
   );
+  const files: SourceFile[] = rawFiles.map((file) => ({ path: file.path, code: rewriteRegistryImports(file.raw) }));
 
-  const stylesPath = `registry/styles/${entry.category}.css`;
-  const stylesCss = await readRepoFile(stylesPath);
-  const keyframesCss = stylesCss.includes("@keyframes") ? stylesCss : null;
+  const needsCn = rawFiles.some((file) => usesCn(file.raw));
+  const cnHelper = needsCn ? await readRepoFile("registry/lib/utils.ts") : null;
+
+  const stylesCss = await readOptionalRepoFile(`registry/styles/${entry.category}.css`);
+  const keyframesCss = stylesCss?.includes("@keyframes") ? stylesCss : null;
+
+  const stepKeys = [
+    entry.dependencies.length > 0 ? "dependencies" : null,
+    "copy",
+    cnHelper ? "cn" : null,
+    keyframesCss ? "keyframes" : null,
+  ].filter((key): key is string => key !== null);
+  const stepNumber = (key: string) => stepKeys.indexOf(key) + 1;
 
   const defaults = defaultValues(entry.controls);
   const usage = fillUsage(entry.usage, defaults);
@@ -130,12 +152,12 @@ export default async function ComponentPage({ params }: { params: Promise<{ id: 
         <ol className="flex flex-col gap-6">
           {installCommand ? (
             <li className="flex flex-col gap-2">
-              <h3 className="text-sm font-medium">1. Install the dependencies</h3>
+              <h3 className="text-sm font-medium">{stepNumber("dependencies")}. Install the dependencies</h3>
               <CodeBlock code={installCommand} label="terminal" />
             </li>
           ) : null}
           <li className="flex flex-col gap-2">
-            <h3 className="text-sm font-medium">{installCommand ? "2" : "1"}. Copy each file into your project</h3>
+            <h3 className="text-sm font-medium">{stepNumber("copy")}. Copy each file into your project</h3>
             <ul className="flex flex-col gap-1 font-mono text-sm">
               {entry.files.map((file) => (
                 <li key={file}>
@@ -146,14 +168,27 @@ export default async function ComponentPage({ params }: { params: Promise<{ id: 
               ))}
             </ul>
             <p className="text-sm text-muted-foreground">
-              The files import <code className="font-mono">cn</code> from <code className="font-mono">@/registry/lib/utils</code> and
-              siblings from <code className="font-mono">@/registry/ui/...</code>. Adjust these imports to your project&apos;s
-              paths (for example <code className="font-mono">@/lib/utils</code>).
+              Imports were rewritten to the shadcn-style <code className="font-mono">@/components/ui</code>,{" "}
+              <code className="font-mono">@/hooks</code> and <code className="font-mono">@/lib/utils</code> aliases. The
+              original file is linked under Source.
             </p>
           </li>
+          {cnHelper ? (
+            <li className="flex flex-col gap-2">
+              <h3 className="text-sm font-medium">
+                {stepNumber("cn")}. Add the cn helper to <code className="font-mono">lib/utils.ts</code> (skip if your project
+                already has it, e.g. from shadcn/ui)
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                It needs <code className="font-mono">clsx</code> and <code className="font-mono">tailwind-merge</code>:
+              </p>
+              <CodeBlock code="npm install clsx tailwind-merge" label="terminal" />
+              <CodeBlock code={cnHelper} label="lib/utils.ts" />
+            </li>
+          ) : null}
           {keyframesCss ? (
             <li className="flex flex-col gap-2">
-              <h3 className="text-sm font-medium">{installCommand ? "3" : "2"}. Add the keyframes</h3>
+              <h3 className="text-sm font-medium">{stepNumber("keyframes")}. Add the keyframes</h3>
               <p className="text-sm text-muted-foreground">
                 This component uses <code className="font-mono">@keyframes</code> from its category stylesheet.
               </p>

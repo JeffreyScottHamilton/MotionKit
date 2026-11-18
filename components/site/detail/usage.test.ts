@@ -1,6 +1,17 @@
 import { describe, expect, it } from "vitest";
+import ts from "typescript";
 import { defaultValues, fillUsage } from "./usage";
 import type { Control } from "@/registry/schema";
+
+/** True when the snippet parses as TSX with no syntax errors. */
+function parsesAsTsx(code: string): boolean {
+  const { diagnostics } = ts.transpileModule(code, {
+    fileName: "usage.tsx",
+    reportDiagnostics: true,
+    compilerOptions: { jsx: ts.JsxEmit.Preserve },
+  });
+  return (diagnostics ?? []).length === 0;
+}
 
 describe("fillUsage", () => {
   it("inserts numbers as bare literals", () => {
@@ -50,6 +61,52 @@ describe("fillUsage", () => {
   it("handles the { {{x}} } form by replacing only the inner token", () => {
     expect(fillUsage("delay={ {{delay}} }", { delay: 0.5 })).toBe("delay={ 0.5 }");
     expect(fillUsage("v={ {{s}} }", { s: "abc" })).toBe('v={ "abc" }');
+  });
+
+  it("escapes the surrounding quote char inside a quoted attribute", () => {
+    const out = fillUsage('<X per="{{per}}" />', { per: 'a"b' });
+    expect(out).toBe('<X per={"a\\"b"} />');
+    expect(parsesAsTsx(out)).toBe(true);
+  });
+
+  it("escapes a single quote inside a single-quoted attribute", () => {
+    const out = fillUsage("<X per='{{per}}' />", { per: "a'b" });
+    expect(out).toBe("<X per={\"a'b\"} />");
+    expect(parsesAsTsx(out)).toBe(true);
+  });
+
+  it("uses an expression for a quoted attribute value containing & (JSX decodes entities)", () => {
+    const out = fillUsage('<X title="{{t}}" />', { t: "Tom &amp; Jerry" });
+    expect(out).toBe('<X title={"Tom &amp; Jerry"} />');
+    expect(parsesAsTsx(out)).toBe(true);
+  });
+
+  it("keeps a quoted attribute value raw when it has nothing to escape", () => {
+    expect(fillUsage('<X per="{{per}}" />', { per: "word" })).toBe('<X per="word" />');
+  });
+
+  it("escapes a value inside a JS string in an expression container", () => {
+    const out = fillUsage('<X label={"{{label}}"} />', { label: 'say "hi"' });
+    expect(out).toBe('<X label={"say \\"hi\\""} />');
+    expect(parsesAsTsx(out)).toBe(true);
+  });
+
+  it("wraps JSX text values that contain < > { } or & in an expression", () => {
+    for (const value of ["a<b", "a>b", "{x}", "a}b", "Tom & Jerry"]) {
+      const out = fillUsage("<span>{{t}}</span>", { t: value });
+      expect(out).toBe(`<span>{${JSON.stringify(value)}}</span>`);
+      expect(parsesAsTsx(`const el = (${out});`)).toBe(true);
+    }
+  });
+
+  it("keeps plain JSX text raw", () => {
+    expect(fillUsage("<span>{{t}}</span>", { t: "Hello world" })).toBe("<span>Hello world</span>");
+  });
+
+  it("keeps a bare string inside a JS expression valid when it contains quotes", () => {
+    const out = fillUsage("v={ {{s}} }", { s: 'a"b' });
+    expect(out).toBe('v={ "a\\"b" }');
+    expect(parsesAsTsx(`const el = <X ${out} />;`)).toBe(true);
   });
 
   it("leaves tokens for unknown props untouched", () => {
